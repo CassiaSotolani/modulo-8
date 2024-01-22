@@ -1,20 +1,14 @@
-Feature: Tela de cadastro - Checkout
+#language: pt
+
+Funcionalidade: Tela de cadastro - Checkout
 Como cliente da EBAC-SHOP
 Quero fazer concluir meu cadastro   
 Para finalizar minha compra
 
-Scenario Outline: CT001 - Validar cadastro na plataforma
-    Given que estou na tela de cadastro - checkout na plataforma da EBAC
-    And informo o nome <nome>
-    And informo o sobrenome <sobrenome>
-    And seleciono um País <pais>
-    And informo o endereço <endereco>
-    And informo a cidade <cidade>
-    And informo o CEP <cep>
-    And informo o telfone <telefone>
-    And informo o e-mail <email>
-    When clicar no botão "FINALIZAR COMPRA"
-    Then <resultado>
+Esquema do Cenário: CT001 - Validar cadastro na plataforma
+    Dado que estou na tela de cadastro - checkout na plataforma da EBAC
+    Quando informo o nome: <nome>, sobrenome: <sobrenome>, País: <pais>, endereço: <endereco>, cidade: <cidade>, CEP: <cep>, telefone: <telefone>, e-mail: <email> e clicar no botão "FINALIZAR COMPRA"
+    Então <resultado>
 Examples: 
     | nome     | sobrenome   | pais   | endereco                       | cidade     | cep         | telefone       | email                   | resultado                                          |
     | "Cassia" | "Sotolani"  | Brasil | "Rua Mozart Calheiros, Nº 540" | "Dourados" | "79811-010" | "6799826-2989" | "ca.sotolani@gmail.com" | "Cadastro realizaro com sucesso"                   |
