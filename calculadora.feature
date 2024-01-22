@@ -1,18 +1,20 @@
-Feature: Calculadora
+#language: pt
+
+Funcionalidade: Calculadora
 Como não sei fazer conta de cabeça
 Quero usar a calculadora do sistema
 Para somar dois números
 
-Scenario: CT001 - Soma de 2 números
-    Given que eu acesse a calculadora
-    When eu somar 2 + 2
-    Then o resultado deve ser 4
+Cenário: CT001 - Soma de 2 números
+    Dado que eu acesse a calculadora
+    Quando eu somar 2 + 2
+    Então o resultado deve ser 4
 
-Scenario Outline: CT002 - Soma de 2 números
-    Given que eu acesse a calculadora
-    When eu somar <n1> + <n2>
-    Then resultado deve ser <resultado>
-Examples: 
+Esquema do Cenário: CT002 - Soma de 2 números
+    Dado que eu acesse a calculadora
+    Quando eu somar <n1> + <n2>
+    Então resultado deve ser <resultado>
+Exemplos: 
     | n1  | n2 | resultado  | 
     | 1   | 1  | 2          |
     | 2   | 2  | 4          |
