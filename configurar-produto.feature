@@ -1,56 +1,41 @@
-Feature: Configurar produto
+#language: pt
+
+Funcionalidade: Configurar produto
 Como cliente da EBAC-SHOP
 Quero configurar meu produto de acordo com meu tamanho e gosto
 E escolher a quantidade
 Para depois inserir no carrinho
 
-Background:
-    Given que acesse a página do produto
+Contexto:
+    Dado que eu acesse a página do produto
 
-Scenario: CT001 - Adicionar produto no carrinho
-    And seleciono uma cor disponível
-    And seleciono um tamanho disponível
-    And seleciono no máximo 10 itens
-    When clicar no botão "Comprar"
-    Then será apresentado a mensagem "Produto adicionado no carrinho com sucesso!"
+Cenário: CT001 - Adicionar produto no carrinho
+    Quando seleciono uma cor, tamanho, no máximo 10 itens do produto e clico no botão "Comprar"
+    Então será apresentado a mensagem "Produto adicionado no carrinho com sucesso!"
 
+Esquema do Cenário: CT002 - Validar seleção de cor
+    Quando seleciono um tamanho, no máximo 10 itens do produto e clico no botão "Comprar"
+    Então será apresentado uma mensagem <mensagem>
+Exemplos: 
+    | mensagem            |
+    | "Selecione uma cor" |
 
-Scenario Outline: CT002 - Validar seleção de cor
-    And seleciono um tamanho disponível
-    And seleciono no máximo 10 itens
-    When clicar no botão <botao>
-    Then será apresentado uma mensagem <mensagem>
-Examples: 
-    | botao   | mensagem          |
-    | Comprar | Selecione uma cor |
+Esquema do Cenário: CT003 - Validar seleção de tamanho
+    Quando seleciono uma cor, no máximo 10 itens do produto e clico no botão "Comprar"
+    Então será apresentado uma mensagem <mensagem>
+Exemplos: 
+    | mensagem               |
+    | "Selecione um tamanho" |
 
+Esquema do Cenário: CT004 - Validar quantidade de itens
+    Quando seleciono uma cor, tamanho, <itens> itens do produto e clico no botão "Comprar"
+    Então será apresentado uma mensagem <mensagem>
+Exemplos: 
+    | itens | mensagem                                          |
+    | "11"  | "Selecione no máximo 10 itens do mesmo produto"   |
+    | "10"  | "Produto adicionado no carrinho com sucesso!"     |
+    | "9"   | "Produto adicionado no carrinho com sucesso!"     |
 
-Scenario Outline: CT003 - Validar seleção de tamanho
-    And seleciono uma cor disponível
-    And seleciono no máximo 10 itens
-    When clicar no botão <botao>
-    Then será apresentado uma mensagem <mensagem>
-Examples: 
-    | botao   | mensagem             |
-    | Comprar | Selecione um tamanho |
-
-
-Scenario Outline: CT004 - Validar quantidade de itens
-    And seleciono uma cor disponível
-    And seleciono um tamanho disponível
-    And seleciono <itens> itens do produto
-    When clicar no botão <botao>
-    Then será apresentado uma mensagem <mensagem>
-Examples: 
-    | itens | botao   | mensagem                                          |
-    | 11    | Comprar | Selecione no máximo 10 itens do mesmo produto     |
-    | 10    | Comprar | Produto adicionado no carrinho com sucesso!       |
-    | 9     | Comprar | Produto adicionado no carrinho com sucesso!       |
-
-
-Scenario: CT005 - Validar botão "Limpar"
-    And seleciono uma cor disponível
-    And seleciono um tamanho disponível
-    And seleciono no máximo 10 itens
-    When clicar no botão "Limpar"
-    Then todos os campos devem voltar ao estado original
+Cenário: CT005 - Validar botão "Limpar"
+    Quando seleciono uma cor, tamanho, no máximo 10 itens do produto e clico no botão "Limpar"
+    Então todos os campos devem voltar ao estado original
