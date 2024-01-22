@@ -1,15 +1,15 @@
-Feature: Login da plataforma
+#language: pt
+
+Funcionalidade: Login da plataforma
 Como cliente da EBAC-SHOP
 Quero fazer o login (autenticação) na plataforma  
 Para visualizar meus pedidos
 
-Scenario Outline: CT001 - Validar login na plataforma
-    Given que estou na tela de login na plataforma da EBAC
-    When eu digitar o usuário <usuario>
-    And a senha <senha>
-    And clicar no botão "Login"
-    Then <resultado>
-Examples: 
+Esquema do Cenário: CT001 - Validar login na plataforma
+    Dado que estou na tela de login na plataforma da EBAC
+    Quando digitar o usuário <usuario>, a senha <senha> e clicar no botão "Login"
+    Então <resultado>
+Exemplos: 
     | usuario               | senha     | resultado                                                 |
     | "cassia@ebac.com.br"  | "123*321" | "O usuário dever ser direcionado para a tela de checkout" |
     | "cassia@ebac.com.br"  | "teste"   | "Usuário ou senha inválidos"                              |
